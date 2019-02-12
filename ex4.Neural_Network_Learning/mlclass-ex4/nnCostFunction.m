@@ -84,7 +84,7 @@ p = sum(sum(Theta1(:, 2:end).^2, 2))+sum(sum(Theta2(:, 2:end).^2, 2));
 J = sum(sum((-Y).*log(h) - (1-Y).*log(1-h), 2))/m + lambda*p/(2*m);
 
 % calculate sigmas
-sigma3 = a3.-Y;
+sigma3 = a3 - Y;  % element-wise operation is not correct
 sigma2 = (sigma3*Theta2).*sigmoidGradient([ones(size(z2, 1), 1) z2]);
 sigma2 = sigma2(:, 2:end);
 
